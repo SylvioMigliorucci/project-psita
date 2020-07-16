@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project psita</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script lang="javascript">
+      $(document).ready(function(){
+        $("button").click(function () {
+
+          var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://api.giphy.com/v1/gifs/random?tag=cockatiel&api_key=FjVjOaHIY41L0YlVVnEjlcHE3wC9jJ5J&limit=1",
+            "method": "GET",
+            "headers": {},
+            "dataType":'jsonp',
+          }
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+            $("#calop").append("<img src='"+response.data.images.original.url+"'/>");
+          });
+        })
+      });
+    </script>
+
+    <button submit="ok" value="OK">Aqui</button>
+
+    <h3 id="calop">A Calopsita aparece aqui</h3>
+  </body>
+</html>
